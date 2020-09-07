@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: local
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+logging:
+  file:
+    path: /log
+    name: /microservice-eureka.log

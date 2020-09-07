@@ -1,0 +1,27 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: SpringBootAdminServer
+  boot:
+    admin:
+      ui:
+        title: SpringBootAdmin-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://47.100.17.167:8761/eureka/,http://47.100.17.167:8762/eureka/    # 指定注册中心的地址
+  instance:
+    preferIpAddress: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+logging:
+  file:
+    path: /log
+    name: microservice-springbootadmin-server.log
