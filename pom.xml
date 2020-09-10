@@ -15,8 +15,9 @@
 
     <modules>
         <module>microservice-discovery-eureka</module>
-        <module>microservice-provider-user</module>
         <module>microservice-springbootadmin-server</module>
+        <module>microservice-provider-user</module>
+        <module>microservice-provider-order</module>
     </modules>
 
     <properties>
