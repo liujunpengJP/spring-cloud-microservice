@@ -9,7 +9,4 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
-logging:
-  file:
-    path: /log
-    name: /microservice-eureka.log
+

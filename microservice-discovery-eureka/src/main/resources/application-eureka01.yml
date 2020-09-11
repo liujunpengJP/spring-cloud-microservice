@@ -10,9 +10,10 @@ eureka:
     preferIpAddress: true       # 使用IP注册
     lease-renewal-interval-in-seconds: 3   # 心跳间隔
     lease-expiration-duration-in-seconds: 7 # 服务失效时间： 如果多久没有收到请求，则可以删除服务
+    ip-address: 47.100.17.167
   client:
     serviceUrl:
-      defaultZone: http://47.100.17.167:8762/eureka/
+      defaultZone: http://${eureka.instance.hostname}:8762/eureka/
     register-with-eureka: true
     fetch-registry: true
   server:
@@ -26,3 +27,7 @@ eureka:
     wait-time-in-ms-when-sync-empty: 0
     # 集群之间相互更新节点信息的时间频率
     peer-eureka-nodes-update-interval-ms: 60000
+logging:
+  file:
+    name: /home/eureka01/logs/microservice-eureka.log
+
