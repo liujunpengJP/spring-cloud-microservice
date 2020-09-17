@@ -10,7 +10,8 @@ eureka:
     preferIpAddress: true       # 使用IP注册
     lease-renewal-interval-in-seconds: 3   # 心跳间隔
     lease-expiration-duration-in-seconds: 7 # 服务失效时间： 如果多久没有收到请求，则可以删除服务
-    ip-address: 47.100.17.167
+    ip-address: ${eureka.instance.hostname}
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
   client:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:8761/eureka/
