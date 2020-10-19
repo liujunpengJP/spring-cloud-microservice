@@ -27,3 +27,6 @@ management:
 zuul:
   routes:
     microservice-provider-user: /user/**
+logging:
+  file:
+    name: /home/zuul/logs/microservice-zuul.log

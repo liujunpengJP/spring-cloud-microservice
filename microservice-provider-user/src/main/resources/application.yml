@@ -8,6 +8,17 @@ spring:
     url: jdbc:mysql://47.100.17.167:3306/liujunpeng?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: root
+  redis:
+    #password: 'redis'
+    host: 47.100.17.167
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 30000
 mybatis-plus:
   global-config:
     db-config:
@@ -28,14 +39,21 @@ logging:
   level:
     com.itmuch.cloud.microserviceprovideruser.mapper: debug
   file:
-    path: /log
-    name: microserviceprovideruser.log
+    path: /home/log
 eureka:
+  instance:
+    hostname: 127.0.0.1
+    preferIpAddress: true
+    lease-renewal-interval-in-seconds: 3   # 心跳间隔
+    lease-expiration-duration-in-seconds: 7 # 服务失效时间： 如果多久没有收到请求，则可以删除服务
+    ip-address: ${eureka.instance.hostname} # ip地址
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port} # 注册列表显示的ip地址+服务名称+端口
   client:
     serviceUrl:
-      defaultZone: http://47.100.17.167:8761/eureka/,http://47.100.17.167:8762/eureka/    # 指定注册中心的地址
-  instance:
-    preferIpAddress: true
+      #defaultZone: http://47.100.17.167:8761/eureka/    # 指定注册中心的地址
+      defaultZone: http://127.0.0.1:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
 management:
   endpoints:
     web:
