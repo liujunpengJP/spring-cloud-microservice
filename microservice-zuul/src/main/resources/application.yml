@@ -26,7 +26,8 @@ management:
       show-details: ALWAYS
 zuul:
   routes:
-    microservice-provider-user: /user/**
+    microservice-provider-user: /user/** #应用模块访问配置
+    microservice-provider-order: /order/** #应用模块访问配置
 logging:
   file:
     name: /home/zuul/logs/microservice-zuul.log
