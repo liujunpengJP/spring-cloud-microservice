@@ -2,10 +2,10 @@ package com.itmuch.cloud.microserviceprovideruser.service;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 使用@FeignClient("microservice-provider-user")注解绑定microservice-provider-user服务
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient(name = "microservice-provider-order", fallback = UserFeignClinet.UserFeignClinetFallback.class)
 public interface UserFeignClinet {
 
-    @RequestMapping("/order")
-    String queryOrderAll(@Param("jsonParam") String jsonParam);
+    @RequestMapping("/queryOrder")
+    String queryOrderAll(@RequestParam String jsonParam);
 
     /**
      * 这边采取了和Spring Cloud官方文档相同的做法，
